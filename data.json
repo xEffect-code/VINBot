@@ -1,6 +1,6 @@
 {
   "meta": {
-    "next_app_id": 13
+    "next_app_id": 19
   },
   "users": {
     "1463358618": {
@@ -284,9 +284,141 @@
       "approved_by": 5958119520,
       "approved_at": "2025-11-04T17:33:31.760990",
       "shipped_by": 5958119520,
-      "shipped_at": "2025-11-04T17:33:57.447782",
+      "shipped_at": "2025-11-04T17:38:16.496745",
       "tracking_number": null,
       "tracking_photo_file_id": "AgACAgIAAxkBAAIBMGkKOQSoi6wDCmWOQWQt8SrDjvuWAAIOEGsbXK5RSPrpJTS7WzdkAQADAgADeQADNgQ"
+    },
+    "13": {
+      "id": 13,
+      "vin_norm": "WVWJK73C29P059234",
+      "vin_raw": "WVWJK73C29P059234",
+      "photo_reg_file_id": "AgACAgIAAxkBAAIBPGkKOoIHXzU7PGYNw2P6Sc2seAnDAAI4EGsb9MxRSIuxLVib-tzYAQADAgADeQADNgQ",
+      "photo_vin_file_id": null,
+      "full_name": "Галайчук Виталий  Евгеньевич",
+      "phone": "89283331616",
+      "owner_phone": "+79283331616",
+      "receiver_phone": "89283331616",
+      "sdek_address": "Краснодар Ломоносова 43",
+      "client_id": 5958119520,
+      "status": "SHIPPED",
+      "created_at": "2025-11-04T17:41:31.898043",
+      "mod_chat_message_id": 327,
+      "approved_by": 5958119520,
+      "approved_at": "2025-11-04T17:42:01.182104",
+      "shipped_by": 5958119520,
+      "shipped_at": "2025-11-04T17:42:48.370848",
+      "tracking_number": null,
+      "tracking_photo_file_id": "AgACAgIAAxkBAAIBS2kKOxffhtmVMxLqCOfQ5_3cUgABUwACMxBrG1yuUUh2JpurAAEFrngBAAMCAAN5AAM2BA"
+    },
+    "14": {
+      "id": 14,
+      "vin_norm": "12343433434343434",
+      "vin_raw": "12343433434343434",
+      "photo_reg_file_id": "AgACAgIAAxkBAAPpaQo1sWUYN-QCCBuF0_ST88aiuq0AApYPaxuh0FBIYCHUPTHcz9EBAAMCAAN5AAM2BA",
+      "photo_vin_file_id": null,
+      "full_name": "МИТ",
+      "phone": "+78966666666",
+      "owner_phone": "+78966666666",
+      "receiver_phone": "+78966666666",
+      "sdek_address": "Про",
+      "client_id": 5201296217,
+      "status": "REJECTED",
+      "created_at": "2025-11-04T18:17:07.680631",
+      "mod_chat_message_id": 443,
+      "approved_by": null,
+      "approved_at": null,
+      "shipped_by": null,
+      "shipped_at": null,
+      "tracking_number": null,
+      "tracking_photo_file_id": null
+    },
+    "15": {
+      "id": 15,
+      "vin_norm": "WVWJK73C29P059235",
+      "vin_raw": "WVWJK73C29P059235",
+      "photo_reg_file_id": "AgACAgIAAxkBAAIByWkKQ9GmwpJXkxuNafT7Rd1yxTwTAAJ3EGsb9MxRSDLqFwvzp93SAQADAgADeQADNgQ",
+      "photo_vin_file_id": null,
+      "full_name": "Галайчук Виталий Евгеньевич",
+      "phone": "89283331616",
+      "owner_phone": "+7928333161",
+      "receiver_phone": "89283331616",
+      "sdek_address": "Краснодар Ломоносова 43",
+      "client_id": 5958119520,
+      "status": "REJECTED",
+      "created_at": "2025-11-04T18:21:06.637805",
+      "mod_chat_message_id": 468,
+      "approved_by": null,
+      "approved_at": null,
+      "shipped_by": null,
+      "shipped_at": null,
+      "tracking_number": null,
+      "tracking_photo_file_id": null
+    },
+    "16": {
+      "id": 16,
+      "vin_norm": "12322222222222222",
+      "vin_raw": "12322222222222222",
+      "photo_reg_file_id": "AgACAgIAAxkBAAIB32kKRWez0AHfJIV15w5PdJzncJNpAAIxEGsbodBQSHDdHa_1ZCglAQADAgADeQADNgQ",
+      "photo_vin_file_id": null,
+      "full_name": "Я в пути!",
+      "phone": "+78966666666",
+      "owner_phone": "+78966666666",
+      "receiver_phone": "+78966666666",
+      "sdek_address": "Под",
+      "client_id": 5201296217,
+      "status": "REJECTED",
+      "created_at": "2025-11-04T18:27:07.365407",
+      "mod_chat_message_id": 490,
+      "approved_by": null,
+      "approved_at": null,
+      "shipped_by": null,
+      "shipped_at": null,
+      "tracking_number": null,
+      "tracking_photo_file_id": null
+    },
+    "17": {
+      "id": 17,
+      "vin_norm": "WVWJK73C29P059235",
+      "vin_raw": "WVWJK73C29P059235",
+      "photo_reg_file_id": "AgACAgIAAxkBAAIB9WkKRhcErbZ1qeTmF6p9IN2v3gKFAAKEEGsb9MxRSA9fpwLl2OfIAQADAgADeQADNgQ",
+      "photo_vin_file_id": null,
+      "full_name": "Галайчук Виталий  Евгеньевич",
+      "phone": "89283331616",
+      "owner_phone": "+79283331616",
+      "receiver_phone": "89283331616",
+      "sdek_address": "Краснодар Ломоносова 43",
+      "client_id": 5958119520,
+      "status": "SHIPPED",
+      "created_at": "2025-11-04T18:31:58.327710",
+      "mod_chat_message_id": 520,
+      "approved_by": 5958119520,
+      "approved_at": "2025-11-04T18:32:15.481036",
+      "shipped_by": 5958119520,
+      "shipped_at": "2025-11-04T18:32:49.919759",
+      "tracking_number": null,
+      "tracking_photo_file_id": "AgACAgIAAxkBAAICDGkKRtHogIzZh62FMr2NekG3IznbAAJ_EGsbXK5RSLvwg9wZ_CAPAQADAgADeQADNgQ"
+    },
+    "18": {
+      "id": 18,
+      "vin_norm": "WVWJK73C29P059236",
+      "vin_raw": "WVWJK73C29P059236",
+      "photo_reg_file_id": "AgACAgIAAxkBAAICGmkKR6hzu9B1cRc3ywl7vUopFfqPAAKYEGsbGvBRSNcXqPKfWLK0AQADAgADeQADNgQ",
+      "photo_vin_file_id": null,
+      "full_name": "Galaichuc Margarita Genn",
+      "phone": "89183344567",
+      "owner_phone": "+79189967249",
+      "receiver_phone": "89183344567",
+      "sdek_address": "Краснодар Ломоносова 44",
+      "client_id": 5284702326,
+      "status": "REJECTED",
+      "created_at": "2025-11-04T18:37:24.704965",
+      "mod_chat_message_id": 549,
+      "approved_by": null,
+      "approved_at": null,
+      "shipped_by": null,
+      "shipped_at": null,
+      "tracking_number": null,
+      "tracking_photo_file_id": null
     }
   },
   "events": [
@@ -450,6 +582,69 @@
       "actor_id": 5958119520,
       "action": "SHIP",
       "data": "PHOTO"
+    },
+    {
+      "app_id": 12,
+      "ts": "2025-11-04T17:38:16.500742",
+      "actor_id": 5958119520,
+      "action": "SHIP",
+      "data": "PHOTO"
+    },
+    {
+      "app_id": 13,
+      "ts": "2025-11-04T17:42:01.187101",
+      "actor_id": 5958119520,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 13,
+      "ts": "2025-11-04T17:42:48.376845",
+      "actor_id": 5958119520,
+      "action": "SHIP",
+      "data": "PHOTO"
+    },
+    {
+      "app_id": 14,
+      "ts": "2025-11-04T18:17:32.734070",
+      "actor_id": 6415524887,
+      "action": "REJECT",
+      "data": "Что нужно"
+    },
+    {
+      "app_id": 15,
+      "ts": "2025-11-04T18:26:34.198884",
+      "actor_id": 5958119520,
+      "action": "REJECT",
+      "data": "Вы сняты с гарантии"
+    },
+    {
+      "app_id": 16,
+      "ts": "2025-11-04T18:28:10.879432",
+      "actor_id": 5958119520,
+      "action": "REJECT",
+      "data": "Вы сняты с гарантии по причине использования чужого ПО"
+    },
+    {
+      "app_id": 17,
+      "ts": "2025-11-04T18:32:15.486034",
+      "actor_id": 5958119520,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 17,
+      "ts": "2025-11-04T18:32:49.925755",
+      "actor_id": 5958119520,
+      "action": "SHIP",
+      "data": "PHOTO"
+    },
+    {
+      "app_id": 18,
+      "ts": "2025-11-04T18:38:13.457630",
+      "actor_id": 5958119520,
+      "action": "REJECT",
+      "data": "У вас не наша русификация"
     }
   ]
 }

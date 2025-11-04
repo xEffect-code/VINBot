@@ -166,6 +166,9 @@ class NewApp(StatesGroup):
 class ShipFlow(StatesGroup):
     WAIT_TRACK_PHOTO = State()
 
+class RejectFlow(StatesGroup):
+    WAIT_COMMENT = State()
+
 # ───────── keyboards / helpers for keyboards
 def kb_user_confirm():
     return InlineKeyboardMarkup(inline_keyboard=[
@@ -192,7 +195,7 @@ def kb_mod_after_approve(app_id: int):
 def kb_mod_after_ship(app_id: int):
     # после отправки — только кнопка "показать фото"
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="📸 Фото с треком", callback_data=f"viewtrack:{app_id}")]
+        [InlineKeyboardButton(text="✅ Фото с треком", callback_data=f"viewtrack:{app_id}")]
     ])
 
 def kb_back_to_app(app_id: int, status: str):
@@ -422,7 +425,8 @@ def only_owner(cb: CallbackQuery) -> bool:
 
 @dp.callback_query(F.data.startswith("appr:"))
 async def cb_approve(c: CallbackQuery):
-    if not await is_chat_admin_or_assistant(c.from_user.id, c.message.chat.id):
+    # только владелец может принять
+    if c.from_user.id != OWNER_ID:
         await c.answer("Недостаточно прав", show_alert=True)
         return
     app_id = int(c.data.split(":")[1])
@@ -452,8 +456,9 @@ async def cb_approve(c: CallbackQuery):
     await c.answer("Принято ✅")
 
 @dp.callback_query(F.data.startswith("rej:"))
-async def cb_reject(c: CallbackQuery):
-    if not await is_chat_admin_or_assistant(c.from_user.id, c.message.chat.id):
+async def cb_reject(c: CallbackQuery, state: FSMContext):
+    # только владелец может отклонить
+    if c.from_user.id != OWNER_ID:
         await c.answer("Недостаточно прав", show_alert=True)
         return
     app_id = int(c.data.split(":")[1])
@@ -463,14 +468,65 @@ async def cb_reject(c: CallbackQuery):
     if app["status"] in {Status.REJECTED, Status.CLOSED}:
         await c.answer("Уже отклонено/закрыто", show_alert=True)
         return
+
+    # просим владелца написать причину
+    await state.set_state(RejectFlow.WAIT_COMMENT)
+    await state.update_data(reject_app_id=app_id)
+    prompt_msg = await c.message.reply("Напишите причину отказа 👇")
+    await state.update_data(reject_prompt_msg_id=prompt_msg.message_id)
+    await c.answer()
+
+@dp.message(RejectFlow.WAIT_COMMENT, F.text)
+async def reject_comment_take(m: Message, state: FSMContext):
+    # только OWNER сюда должен писать
+    if m.from_user.id != OWNER_ID:
+        await m.reply("Только владелец может указывать причину отказа.")
+        return
+    d = await state.get_data()
+    app_id = d.get("reject_app_id")
+    prompt_id = d.get("reject_prompt_msg_id")
+    app = store.get_app(int(app_id)) if app_id else None
+    if not app:
+        await m.reply("Заявка не найдена.")
+        await state.clear()
+        return
+
+    comment = m.text.strip()
+
+    # ставим статус
     app["status"] = Status.REJECTED
     await store.update_app(app)
-    await store.add_event(app_id, c.from_user.id, "REJECT", "")
-    await bot.send_message(app["client_id"], f"❌ Ваша заявка №{app_id} отклонена. Пожалуйста, проверьте корректность данных и подайте заявку заново.")
-    await c.answer("Отклонено ❌")
+    await store.add_event(app["id"], m.from_user.id, "REJECT", comment)
+
+    # отправляем пользователю с комментом
+    await bot.send_message(
+        app["client_id"],
+        f"❌ Ваша заявка №{app['id']} отклонена.\nКомментарий: {comment}"
+    )
+
+    # удаляем карточку и комментарий из мод-чата
+    try:
+        if app.get("mod_chat_message_id"):
+            await bot.delete_message(MOD_CHAT_ID, app["mod_chat_message_id"])
+    except:
+        pass
+    try:
+        # удаляем сообщение с подсказкой
+        if prompt_id:
+            await bot.delete_message(m.chat.id, prompt_id)
+    except:
+        pass
+    try:
+        # удаляем сам комментарий OWNER
+        await bot.delete_message(m.chat.id, m.message_id)
+    except:
+        pass
+
+    await state.clear()
 
 @dp.callback_query(F.data.startswith("ship:"))
 async def cb_ship(c: CallbackQuery, state: FSMContext):
+    # вот тут — любой админ/ассистент
     if not await is_chat_admin_or_assistant(c.from_user.id, c.message.chat.id):
         await c.answer("Недостаточно прав", show_alert=True)
         return
@@ -600,7 +656,6 @@ async def cb_backapp(c: CallbackQuery):
                 reply_markup=kb
             )
         else:
-            # если вдруг без фото — просто обновим подпись и кнопки
             await bot.edit_message_caption(
                 chat_id=MOD_CHAT_ID,
                 message_id=app["mod_chat_message_id"],
