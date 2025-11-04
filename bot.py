@@ -177,6 +177,7 @@ def kb_user_confirm():
     ])
 
 def kb_photos_done():
+    # оставим, чтобы не ломать, но использовать не будем
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="✅ Фото готово", callback_data="photos_done")]
     ])
@@ -298,28 +299,25 @@ async def take_vin(m: Message, state: FSMContext):
     await state.update_data(vin_raw=vin_raw, vin_norm=vnorm, photos=[])
     await state.set_state(NewApp.PHOTOS)
     await m.answer(
-        "Шаг 2/6. Пришли фото:\n1) Страница СТС с VIN\n2) Табличка VIN на авто\n"
-        "Можно одним фото, где видны оба. Когда закончишь — нажми кнопку ниже.",
-        reply_markup=kb_photos_done()
+        "Шаг 2/6. Пришлите ОДНИМ фото: свидетельство о регистрации ТС (сторона с Vin кодом) на фоне таблички с Vin кодом которая расположена на стойке пассажирской двери. (Если автомобиль еще не на учёте то вместо СТС сфотографируйте CMR)."
     )
 
 @dp.message(NewApp.PHOTOS, F.photo)
 async def take_photos(m: Message, state: FSMContext):
-    d = await state.get_data()
-    ph = d.get("photos", [])
-    ph.append(m.photo[-1].file_id)
-    await state.update_data(photos=ph)
-    await m.answer("Фото принято. Если есть ещё — пришли. Когда закончишь — нажми «✅ Фото готово».", reply_markup=kb_photos_done())
+    # берём только одно фото и сразу идём дальше
+    photo_id = m.photo[-1].file_id
+    await state.update_data(photos=[photo_id])
+    await state.set_state(NewApp.FULLNAME)
+    await m.answer("Фото принято ✅\nШаг 3/6. Напиши ФИО получателя (как в документе).")
+
+@dp.message(NewApp.PHOTOS)
+async def photos_wrong(m: Message, state: FSMContext):
+    await m.answer("Нужно прислать именно фото. Попробуй ещё раз 📸")
 
 @dp.callback_query(F.data == "photos_done")
 async def photos_done(c: CallbackQuery, state: FSMContext):
-    await c.answer()
-    d = await state.get_data()
-    if not d.get("photos"):
-        await c.message.answer("Нужно минимум одно фото, где видны документ и табличка VIN. Пришли фото.")
-        return
-    await state.set_state(NewApp.FULLNAME)
-    await c.message.answer("Шаг 3/6. Напиши ФИО получателя (как в документе).")
+    # на случай старой кнопки — просто скажем что нужно прислать фото
+    await c.answer("Пришлите одно фото, и мы продолжим.", show_alert=True)
 
 @dp.message(NewApp.FULLNAME, F.text)
 async def take_fullname(m: Message, state: FSMContext):
@@ -388,7 +386,8 @@ async def usr_send(c: CallbackQuery, state: FSMContext):
         "sdek_address": d["sdek_address"],
         "client_id": c.from_user.id,
         "photo_reg_file_id": photos[0] if photos else None,
-        "photo_vin_file_id": photos[1] if len(photos) > 1 else None
+        # второй мы уже не собираем — пусть будет None
+        "photo_vin_file_id": None
     }
     try:
         app = await store.create_app(payload)
@@ -400,16 +399,6 @@ async def usr_send(c: CallbackQuery, state: FSMContext):
         msg = await send_card_as_photo(app, kb_mod_start(app["id"]))
         app["mod_chat_message_id"] = msg.message_id
         await store.update_app(app)
-
-        # если есть второе фото — отправляем сразу следом (НЕ реплаем)
-        second = None
-        if app["photo_reg_file_id"] and app["photo_vin_file_id"]:
-            second = app["photo_vin_file_id"]
-        elif app["photo_vin_file_id"]:
-            second = None
-        if second:
-            await bot.send_photo(MOD_CHAT_ID, second, caption="Доп. фото", **thread_kwargs())
-
     except Exception as e:
         try:
             await bot.send_message(OWNER_ID, f"❗️Не могу отправить карточку в админ-чат ({MOD_CHAT_ID}). Ошибка:\n<code>{e}</code>")
@@ -469,7 +458,7 @@ async def cb_reject(c: CallbackQuery, state: FSMContext):
         await c.answer("Уже отклонено/закрыто", show_alert=True)
         return
 
-    # просим владелца написать причину
+    # просим владельца написать причину
     await state.set_state(RejectFlow.WAIT_COMMENT)
     await state.update_data(reject_app_id=app_id)
     prompt_msg = await c.message.reply("Напишите причину отказа 👇")

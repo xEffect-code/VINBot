@@ -1,6 +1,6 @@
 {
   "meta": {
-    "next_app_id": 19
+    "next_app_id": 21
   },
   "users": {
     "1463358618": {
@@ -419,6 +419,50 @@
       "shipped_at": null,
       "tracking_number": null,
       "tracking_photo_file_id": null
+    },
+    "19": {
+      "id": 19,
+      "vin_norm": "WVWJK73C29P059236",
+      "vin_raw": "WVWJK73C29P059236",
+      "photo_reg_file_id": "AgACAgIAAxkBAAICMGkKSH1La1PyIti-xdeAAAGTcRgbTgACpxBrGxrwUUjTaAwoiU0VNwEAAwIAA3kAAzYE",
+      "photo_vin_file_id": "AgACAgIAAxkBAAICMmkKSKG1Tsxz-5zqFlJGlRGXpbcYAAKpEGsbGvBRSC6fBDbM4knjAQADAgADeQADNgQ",
+      "full_name": "Галайчук Маргарита Геннадьевна",
+      "phone": "8918997624",
+      "owner_phone": "+791877665",
+      "receiver_phone": "8918997624",
+      "sdek_address": "Краснодар Ломоносова 43",
+      "client_id": 5284702326,
+      "status": "SHIPPED",
+      "created_at": "2025-11-04T18:41:37.064151",
+      "mod_chat_message_id": 575,
+      "approved_by": 5958119520,
+      "approved_at": "2025-11-04T18:42:01.727285",
+      "shipped_by": 5958119520,
+      "shipped_at": "2025-11-04T18:49:03.583729",
+      "tracking_number": null,
+      "tracking_photo_file_id": "AgACAgIAAxkBAAICUGkKSp7SczB3K07dqrSgQm8pGJWgAAKiEGsbXK5RSBrJORdAlo0gAQADAgADeQADNgQ"
+    },
+    "20": {
+      "id": 20,
+      "vin_norm": "54335678965443333",
+      "vin_raw": "54335678965443333",
+      "photo_reg_file_id": "AgACAgIAAxkBAAIB32kKRWez0AHfJIV15w5PdJzncJNpAAIxEGsbodBQSHDdHa_1ZCglAQADAgADeQADNgQ",
+      "photo_vin_file_id": null,
+      "full_name": "Ит",
+      "phone": "+78966666666",
+      "owner_phone": "+78966666666",
+      "receiver_phone": "+78966666666",
+      "sdek_address": "Ролл",
+      "client_id": 5201296217,
+      "status": "APPROVED",
+      "created_at": "2025-11-04T18:55:46.750036",
+      "mod_chat_message_id": 618,
+      "approved_by": 5958119520,
+      "approved_at": "2025-11-04T19:07:20.262380",
+      "shipped_by": null,
+      "shipped_at": null,
+      "tracking_number": null,
+      "tracking_photo_file_id": null
     }
   },
   "events": [
@@ -645,6 +689,27 @@
       "actor_id": 5958119520,
       "action": "REJECT",
       "data": "У вас не наша русификация"
+    },
+    {
+      "app_id": 19,
+      "ts": "2025-11-04T18:42:01.733527",
+      "actor_id": 5958119520,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 19,
+      "ts": "2025-11-04T18:49:03.590723",
+      "actor_id": 5958119520,
+      "action": "SHIP",
+      "data": "PHOTO"
+    },
+    {
+      "app_id": 20,
+      "ts": "2025-11-04T19:07:20.270436",
+      "actor_id": 5958119520,
+      "action": "APPROVE",
+      "data": ""
     }
   ]
 }
