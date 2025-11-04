@@ -1,0 +1,25 @@
+{
+  "seq": 2,
+  "by_id": {
+    "1": {
+      "id": 1,
+      "tg_id": 1463358618,
+      "username": "Kalchenko_Vladimir",
+      "first_name": "Владимир Кальченко",
+      "last_name": null,
+      "created_at": "2025-11-02T18:15:46.475036"
+    },
+    "2": {
+      "id": 2,
+      "tg_id": 7640022521,
+      "username": "Funky_Support_Bot",
+      "first_name": "SupportBot",
+      "last_name": null,
+      "created_at": "2025-11-02T18:31:00.889716"
+    }
+  },
+  "by_tg": {
+    "1463358618": 1,
+    "7640022521": 2
+  }
+}

@@ -1,0 +1,455 @@
+{
+  "meta": {
+    "next_app_id": 13
+  },
+  "users": {
+    "1463358618": {
+      "id": 1463358618,
+      "username": "Kalchenko_Vladimir",
+      "first_name": "Владимир Кальченко",
+      "last_name": null,
+      "created_at": "2025-11-02T21:12:41.482807"
+    },
+    "6415524887": {
+      "id": 6415524887,
+      "username": "Europecarsto",
+      "first_name": "Europe-Car",
+      "last_name": null,
+      "created_at": "2025-11-04T15:27:22.853033"
+    },
+    "5201296217": {
+      "id": 5201296217,
+      "username": "proteleton",
+      "first_name": "📲 Аleksandr👨🏻‍💻🐉",
+      "last_name": null,
+      "created_at": "2025-11-04T15:31:19.336882"
+    },
+    "5958119520": {
+      "id": 5958119520,
+      "username": "Galaychuk_Vitaly",
+      "first_name": "Виталий",
+      "last_name": "Галайчук",
+      "created_at": "2025-11-04T16:05:40.934044"
+    },
+    "5284702326": {
+      "id": 5284702326,
+      "username": null,
+      "first_name": "M",
+      "last_name": null,
+      "created_at": "2025-11-04T16:33:48.419049"
+    }
+  },
+  "applications": {
+    "1": {
+      "id": 1,
+      "vin_norm": "ABCDEFGHJKLMNPRST",
+      "vin_raw": "A B C D E F G H J K L M N P R S T",
+      "photo_reg_file_id": "AgACAgIAAxkBAAIL52kHyWR3l7uOLuiAEDtGV3UZY7omAAK8AAEyG2IzQUjzcdXb2xQR7wEAAwIAA3gAAzYE",
+      "photo_vin_file_id": null,
+      "full_name": "Тест",
+      "phone": "79122801246",
+      "sdek_address": "Тест Тест",
+      "client_id": 1463358618,
+      "status": "SHIPPED",
+      "created_at": "2025-11-02T21:13:45.494010",
+      "mod_chat_message_id": 377,
+      "approved_by": 1463358618,
+      "approved_at": "2025-11-02T21:15:01.931085",
+      "shipped_by": 1463358618,
+      "shipped_at": "2025-11-02T21:15:43.309229",
+      "tracking_number": "132456",
+      "tracking_photo_file_id": null
+    },
+    "2": {
+      "id": 2,
+      "vin_norm": "ABCDEFGHJKLMNPRSW",
+      "vin_raw": "A B C D E F G H J K L M N P R S W",
+      "photo_reg_file_id": "AgACAgIAAxkBAAIL_GkHzq0cZ1ep401p8VsnJr9gkhIeAAJa_DEbP0xASKwKwQ4-bp_0AQADAgADeAADNgQ",
+      "photo_vin_file_id": null,
+      "full_name": "ФИО",
+      "phone": "79122801246",
+      "sdek_address": "Екатеринбург, Гоголя 44",
+      "client_id": 1463358618,
+      "status": "SHIPPED",
+      "created_at": "2025-11-02T21:36:30.629883",
+      "mod_chat_message_id": 384,
+      "approved_by": 1463358618,
+      "approved_at": "2025-11-02T21:37:02.871080",
+      "shipped_by": 7640022521,
+      "shipped_at": "2025-11-02T21:37:53.711512",
+      "tracking_number": "123456",
+      "tracking_photo_file_id": null
+    },
+    "3": {
+      "id": 3,
+      "vin_norm": "23444444444444444",
+      "vin_raw": "23444444444444444",
+      "photo_reg_file_id": "AgACAgIAAxkBAAMtaQobt5YrCRfbeWRpmg4kFthSIwkAAvsNaxvCHlBIbK_RWbImq-EBAAMCAAN5AAM2BA",
+      "photo_vin_file_id": null,
+      "full_name": "Плалалаал алалал Алла",
+      "phone": "79282027722",
+      "sdek_address": "Спорт мир мир",
+      "client_id": 6415524887,
+      "status": "SHIPPED",
+      "created_at": "2025-11-04T15:29:36.789711",
+      "mod_chat_message_id": 54,
+      "approved_by": 6415524887,
+      "approved_at": "2025-11-04T15:29:44.438592",
+      "shipped_by": 6415524887,
+      "shipped_at": "2025-11-04T15:30:27.485071",
+      "tracking_number": "456788",
+      "tracking_photo_file_id": "AgACAgIAAxkBAAMtaQobt5YrCRfbeWRpmg4kFthSIwkAAvsNaxvCHlBIbK_RWbImq-EBAAMCAAN5AAM2BA"
+    },
+    "4": {
+      "id": 4,
+      "vin_norm": "34455555555555555",
+      "vin_raw": "34455555555555555",
+      "photo_reg_file_id": "AgACAgIAAxkBAANIaQocajenDayZLfSIQKC0nBx1n7IAAtAOaxvUI1BIVuGuNLLr-LsBAAMCAAN5AAM2BA",
+      "photo_vin_file_id": null,
+      "full_name": "Digging",
+      "phone": "79384914111",
+      "sdek_address": "Fight",
+      "client_id": 5201296217,
+      "status": "REJECTED",
+      "created_at": "2025-11-04T15:32:41.291230",
+      "mod_chat_message_id": 94,
+      "approved_by": null,
+      "approved_at": null,
+      "shipped_by": null,
+      "shipped_at": null,
+      "tracking_number": null,
+      "tracking_photo_file_id": null
+    },
+    "5": {
+      "id": 5,
+      "vin_norm": "12343434343434343",
+      "vin_raw": "12343434343434343",
+      "photo_reg_file_id": "AgACAgIAAxkBAAMtaQobt5YrCRfbeWRpmg4kFthSIwkAAvsNaxvCHlBIbK_RWbImq-EBAAMCAAN5AAM2BA",
+      "photo_vin_file_id": null,
+      "full_name": "Мило",
+      "phone": "79282027722",
+      "sdek_address": "Ими",
+      "client_id": 6415524887,
+      "status": "SHIPPED",
+      "created_at": "2025-11-04T15:36:04.999386",
+      "mod_chat_message_id": 117,
+      "approved_by": 5201296217,
+      "approved_at": "2025-11-04T15:55:15.135663",
+      "shipped_by": 8204450487,
+      "shipped_at": "2025-11-04T15:55:24.933586",
+      "tracking_number": "Аталанта",
+      "tracking_photo_file_id": null
+    },
+    "6": {
+      "id": 6,
+      "vin_norm": "WVWJK73C29P059232",
+      "vin_raw": "WVWJK73C29P059232",
+      "photo_reg_file_id": "AgACAgIAAxkBAAOEaQokprelONs18uUqC1UMKaYZNnwAAocPaxv0zFFIitB7BohMG9EBAAMCAAN5AAM2BA",
+      "photo_vin_file_id": null,
+      "full_name": "Иванов Иван Иванович",
+      "phone": "89283331616",
+      "sdek_address": "Краснодар,  ул. Байбакова 21",
+      "client_id": 5958119520,
+      "status": "APPROVED",
+      "created_at": "2025-11-04T16:08:25.885085",
+      "mod_chat_message_id": 142,
+      "approved_by": 5958119520,
+      "approved_at": "2025-11-04T16:14:46.719529",
+      "shipped_by": null,
+      "shipped_at": null,
+      "tracking_number": null,
+      "tracking_photo_file_id": null
+    },
+    "7": {
+      "id": 7,
+      "vin_norm": "33333333333333333",
+      "vin_raw": "33333333333333333",
+      "photo_reg_file_id": "AgACAgIAAxkBAANIaQocajenDayZLfSIQKC0nBx1n7IAAtAOaxvUI1BIVuGuNLLr-LsBAAMCAAN5AAM2BA",
+      "photo_vin_file_id": null,
+      "full_name": "Fgh",
+      "phone": "79384914111",
+      "sdek_address": "Mention",
+      "client_id": 5201296217,
+      "status": "APPROVED",
+      "created_at": "2025-11-04T16:41:44.437439",
+      "mod_chat_message_id": 172,
+      "approved_by": 6415524887,
+      "approved_at": "2025-11-04T16:41:54.195035",
+      "shipped_by": null,
+      "shipped_at": null,
+      "tracking_number": null,
+      "tracking_photo_file_id": null
+    },
+    "8": {
+      "id": 8,
+      "vin_norm": "ABCDEFGHJKLMNPRSM",
+      "vin_raw": "A B C D E F G H J K L M N P R S M",
+      "photo_reg_file_id": "AgACAgIAAxkBAAO6aQovMHdXzPtuweKGztEbgpoSGokAAh8LaxujCVlIoLjJFt62rJ0BAAMCAAN4AAM2BA",
+      "photo_vin_file_id": null,
+      "full_name": "Фамилия Имя Отчество",
+      "phone": "+79008001020",
+      "sdek_address": "Город, Улица, Дом",
+      "client_id": 1463358618,
+      "status": "APPROVED",
+      "created_at": "2025-11-04T16:53:58.479082",
+      "mod_chat_message_id": 195,
+      "approved_by": 6415524887,
+      "approved_at": "2025-11-04T17:01:50.137164",
+      "shipped_by": null,
+      "shipped_at": null,
+      "tracking_number": null,
+      "tracking_photo_file_id": null
+    },
+    "9": {
+      "id": 9,
+      "vin_norm": "34343434343434343",
+      "vin_raw": "34343434343434343",
+      "photo_reg_file_id": "AgACAgIAAxkBAAMtaQobt5YrCRfbeWRpmg4kFthSIwkAAvsNaxvCHlBIbK_RWbImq-EBAAMCAAN5AAM2BA",
+      "photo_vin_file_id": null,
+      "full_name": "Мол",
+      "phone": "+78676767676",
+      "owner_phone": "+78676767676",
+      "receiver_phone": "+78676767676",
+      "sdek_address": "()₽&",
+      "client_id": 6415524887,
+      "status": "CLOSED",
+      "created_at": "2025-11-04T17:12:01.543259",
+      "mod_chat_message_id": 217,
+      "approved_by": 6415524887,
+      "approved_at": "2025-11-04T17:12:10.797072",
+      "shipped_by": 6415524887,
+      "shipped_at": "2025-11-04T17:12:36.082716",
+      "tracking_number": null,
+      "tracking_photo_file_id": "AgACAgIAAxkBAAMtaQobt5YrCRfbeWRpmg4kFthSIwkAAvsNaxvCHlBIbK_RWbImq-EBAAMCAAN5AAM2BA"
+    },
+    "10": {
+      "id": 10,
+      "vin_norm": "23232323232323232",
+      "vin_raw": "23232323232323232",
+      "photo_reg_file_id": "AgACAgIAAxkBAAPpaQo1sWUYN-QCCBuF0_ST88aiuq0AApYPaxuh0FBIYCHUPTHcz9EBAAMCAAN5AAM2BA",
+      "photo_vin_file_id": null,
+      "full_name": "Fun",
+      "phone": "+76677888888",
+      "owner_phone": "+78966666666",
+      "receiver_phone": "+76677888888",
+      "sdek_address": "Hi",
+      "client_id": 5201296217,
+      "status": "SHIPPED",
+      "created_at": "2025-11-04T17:20:30.767466",
+      "mod_chat_message_id": 244,
+      "approved_by": 6415524887,
+      "approved_at": "2025-11-04T17:20:46.062412",
+      "shipped_by": 6415524887,
+      "shipped_at": "2025-11-04T17:20:59.393278",
+      "tracking_number": null,
+      "tracking_photo_file_id": "AgACAgIAAxkBAAMtaQobt5YrCRfbeWRpmg4kFthSIwkAAvsNaxvCHlBIbK_RWbImq-EBAAMCAAN5AAM2BA"
+    },
+    "11": {
+      "id": 11,
+      "vin_norm": "34343456788888888",
+      "vin_raw": "34343456788888888",
+      "photo_reg_file_id": "AgACAgIAAxkBAAPpaQo1sWUYN-QCCBuF0_ST88aiuq0AApYPaxuh0FBIYCHUPTHcz9EBAAMCAAN5AAM2BA",
+      "photo_vin_file_id": null,
+      "full_name": "Uhh",
+      "phone": "+78966666666",
+      "owner_phone": "+78966666666",
+      "receiver_phone": "+78966666666",
+      "sdek_address": "Hi",
+      "client_id": 5201296217,
+      "status": "SHIPPED",
+      "created_at": "2025-11-04T17:26:07.293700",
+      "mod_chat_message_id": 273,
+      "approved_by": 6415524887,
+      "approved_at": "2025-11-04T17:26:24.651480",
+      "shipped_by": 6415524887,
+      "shipped_at": "2025-11-04T17:26:38.353652",
+      "tracking_number": null,
+      "tracking_photo_file_id": "AgACAgIAAxkBAAIBFWkKN02kc-nqZoVWU-_IOrqc8Is0AAL_D2sbXK5RSOhKpCa5wTGQAQADAgADeQADNgQ"
+    },
+    "12": {
+      "id": 12,
+      "vin_norm": "WVWJK73C29P059233",
+      "vin_raw": "WVWJK73C29P059233",
+      "photo_reg_file_id": "AgACAgIAAxkBAAIBIWkKOIn7hC8DCAABe-n1bMJ75F2zJQACKRBrG_TMUUjSIREgnUQcYwEAAwIAA3kAAzYE",
+      "photo_vin_file_id": null,
+      "full_name": "Галайчук Виталий Евгеньевич",
+      "phone": "89283331616",
+      "owner_phone": "+79283331616",
+      "receiver_phone": "89283331616",
+      "sdek_address": "Краснодар Ломоносова 43",
+      "client_id": 5958119520,
+      "status": "SHIPPED",
+      "created_at": "2025-11-04T17:33:07.841976",
+      "mod_chat_message_id": 300,
+      "approved_by": 5958119520,
+      "approved_at": "2025-11-04T17:33:31.760990",
+      "shipped_by": 5958119520,
+      "shipped_at": "2025-11-04T17:33:57.447782",
+      "tracking_number": null,
+      "tracking_photo_file_id": "AgACAgIAAxkBAAIBMGkKOQSoi6wDCmWOQWQt8SrDjvuWAAIOEGsbXK5RSPrpJTS7WzdkAQADAgADeQADNgQ"
+    }
+  },
+  "events": [
+    {
+      "app_id": 1,
+      "ts": "2025-11-02T21:15:01.934083",
+      "actor_id": 1463358618,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 1,
+      "ts": "2025-11-02T21:15:43.312228",
+      "actor_id": 1463358618,
+      "action": "SHIP",
+      "data": "132456"
+    },
+    {
+      "app_id": 2,
+      "ts": "2025-11-02T21:37:02.873080",
+      "actor_id": 1463358618,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 2,
+      "ts": "2025-11-02T21:37:53.714503",
+      "actor_id": 7640022521,
+      "action": "SHIP",
+      "data": "123456"
+    },
+    {
+      "app_id": 3,
+      "ts": "2025-11-04T15:29:44.441589",
+      "actor_id": 6415524887,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 3,
+      "ts": "2025-11-04T15:30:27.489050",
+      "actor_id": 6415524887,
+      "action": "SHIP",
+      "data": "456788"
+    },
+    {
+      "app_id": 4,
+      "ts": "2025-11-04T15:32:53.716994",
+      "actor_id": 6415524887,
+      "action": "REJECT",
+      "data": ""
+    },
+    {
+      "app_id": 5,
+      "ts": "2025-11-04T15:55:15.141665",
+      "actor_id": 5201296217,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 5,
+      "ts": "2025-11-04T15:55:24.939588",
+      "actor_id": 8204450487,
+      "action": "SHIP",
+      "data": "Аталанта"
+    },
+    {
+      "app_id": 6,
+      "ts": "2025-11-04T16:14:46.723523",
+      "actor_id": 5958119520,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 7,
+      "ts": "2025-11-04T16:41:54.202031",
+      "actor_id": 6415524887,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 8,
+      "ts": "2025-11-04T17:01:28.219496",
+      "actor_id": 6415524887,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 8,
+      "ts": "2025-11-04T17:01:50.141163",
+      "actor_id": 6415524887,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 9,
+      "ts": "2025-11-04T17:12:10.801068",
+      "actor_id": 6415524887,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 9,
+      "ts": "2025-11-04T17:12:36.088713",
+      "actor_id": 6415524887,
+      "action": "SHIP",
+      "data": "PHOTO"
+    },
+    {
+      "app_id": 9,
+      "ts": "2025-11-04T17:15:58.792127",
+      "actor_id": 6415524887,
+      "action": "CLOSE",
+      "data": ""
+    },
+    {
+      "app_id": 10,
+      "ts": "2025-11-04T17:20:46.068406",
+      "actor_id": 6415524887,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 10,
+      "ts": "2025-11-04T17:20:59.385282",
+      "actor_id": 6415524887,
+      "action": "SHIP",
+      "data": "PHOTO"
+    },
+    {
+      "app_id": 10,
+      "ts": "2025-11-04T17:20:59.400271",
+      "actor_id": 6415524887,
+      "action": "SHIP",
+      "data": "PHOTO"
+    },
+    {
+      "app_id": 11,
+      "ts": "2025-11-04T17:26:24.656475",
+      "actor_id": 6415524887,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 11,
+      "ts": "2025-11-04T17:26:38.357649",
+      "actor_id": 6415524887,
+      "action": "SHIP",
+      "data": "PHOTO"
+    },
+    {
+      "app_id": 12,
+      "ts": "2025-11-04T17:33:31.765987",
+      "actor_id": 5958119520,
+      "action": "APPROVE",
+      "data": ""
+    },
+    {
+      "app_id": 12,
+      "ts": "2025-11-04T17:33:57.451780",
+      "actor_id": 5958119520,
+      "action": "SHIP",
+      "data": "PHOTO"
+    }
+  ]
+}
