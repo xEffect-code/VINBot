@@ -55,7 +55,10 @@ class Store:
     def __init__(self, path: str):
         self.path = path
         self.data = {
-            "meta": {"next_app_id": 1},
+            "meta": {
+                "next_app_id": 1,
+                "next_approved_num": 1  # нумерация только подтверждённых
+            },
             "users": {},
             "applications": {},
             "events": []
@@ -66,6 +69,9 @@ class Store:
             if os.path.exists(self.path):
                 with open(self.path, "r", encoding="utf-8") as f:
                     self.data = json.load(f)
+            # если в старых файлах нет счётчика подтверждений — добавим
+            if "next_approved_num" not in self.data.get("meta", {}):
+                self.data["meta"]["next_approved_num"] = 1
 
     async def save(self):
         async with _LOCK:
@@ -95,6 +101,12 @@ class Store:
         nid = self.data["meta"].get("next_app_id", 1)
         self.data["meta"]["next_app_id"] = nid + 1
         return nid
+
+    def _next_approved_num(self) -> int:
+        """Счётчик только подтверждённых заявок."""
+        n = self.data["meta"].get("next_approved_num", 1)
+        self.data["meta"]["next_approved_num"] = n + 1
+        return n
 
     def find_by_vin(self, vin_norm: str) -> list[dict]:
         return [a for a in self.data["applications"].values() if a["vin_norm"] == vin_norm]
@@ -128,7 +140,8 @@ class Store:
             "shipped_by": None,
             "shipped_at": None,
             "tracking_number": None,
-            "tracking_photo_file_id": None
+            "tracking_photo_file_id": None,
+            "approved_num": None  # появится только при подтверждении
         }
         self.data["applications"][str(app_id)] = app
         await self.save()
@@ -233,10 +246,21 @@ def thread_kwargs():
 
 def build_app_caption(app: dict) -> str:
     u = store.get_user(app["client_id"]) or {}
+    username = u.get("username")
+    tg_link = f'<a href="tg://user?id={app["client_id"]}">написать в TG</a>'
+
+    # если заявка уже подтверждена и у неё есть рабочий номер — показываем номер
+    if app.get("approved_num"):
+        head = f"🆕 <b>Заявка #{app['approved_num']}</b>"
+    else:
+        # для неподтверждённых номер НЕ показываем, чтобы не было дырок
+        head = "🆕 <b>Заявка</b>"
+
     return (
-        f"🆕 <b>Заявка #{app['id']}</b>\n"
+        f"{head}\n"
         f"VIN: <code>{app['vin_raw']}</code>\n"
-        f"Клиент: @{u.get('username') or '—'} (id {app['client_id']})\n"
+        f"Клиент: @{username or '—'} (id {app['client_id']})\n"
+        f"TG контакт: {tg_link}\n"
         f"ФИО: {app['full_name']}\n"
         f"Телефон владельца: {app.get('owner_phone') or '—'}\n"
         f"Телефон получателя СДЭК: {app.get('receiver_phone') or app.get('phone') or '—'}\n"
@@ -304,7 +328,6 @@ async def take_vin(m: Message, state: FSMContext):
 
 @dp.message(NewApp.PHOTOS, F.photo)
 async def take_photos(m: Message, state: FSMContext):
-    # берём только одно фото и сразу идём дальше
     photo_id = m.photo[-1].file_id
     await state.update_data(photos=[photo_id])
     await state.set_state(NewApp.FULLNAME)
@@ -316,7 +339,6 @@ async def photos_wrong(m: Message, state: FSMContext):
 
 @dp.callback_query(F.data == "photos_done")
 async def photos_done(c: CallbackQuery, state: FSMContext):
-    # на случай старой кнопки — просто скажем что нужно прислать фото
     await c.answer("Пришлите одно фото, и мы продолжим.", show_alert=True)
 
 @dp.message(NewApp.FULLNAME, F.text)
@@ -386,7 +408,6 @@ async def usr_send(c: CallbackQuery, state: FSMContext):
         "sdek_address": d["sdek_address"],
         "client_id": c.from_user.id,
         "photo_reg_file_id": photos[0] if photos else None,
-        # второй мы уже не собираем — пусть будет None
         "photo_vin_file_id": None
     }
     try:
@@ -426,6 +447,10 @@ async def cb_approve(c: CallbackQuery):
         await c.answer("Нельзя принять этот статус", show_alert=True)
         return
 
+    # выдаём рабочий номер именно здесь
+    approved_num = store._next_approved_num()
+    app["approved_num"] = approved_num
+
     app["status"] = Status.APPROVED
     app["approved_by"] = c.from_user.id
     app["approved_at"] = now_iso()
@@ -441,7 +466,8 @@ async def cb_approve(c: CallbackQuery):
     except:
         pass
 
-    await bot.send_message(app["client_id"], f"✅ Ваша заявка №{app_id} подтверждена. Ожидайте — скоро отправим и пришлём фото с треком.")
+    # клиенту — уже с рабочим номером
+    await bot.send_message(app["client_id"], f"✅ Ваша заявка №{approved_num} подтверждена. Ожидайте — скоро отправим и пришлём фото с треком.")
     await c.answer("Принято ✅")
 
 @dp.callback_query(F.data.startswith("rej:"))
@@ -487,7 +513,7 @@ async def reject_comment_take(m: Message, state: FSMContext):
     await store.update_app(app)
     await store.add_event(app["id"], m.from_user.id, "REJECT", comment)
 
-    # отправляем пользователю с комментом
+    # отправляем пользователю с комментом — здесь остаётся исходный id, т.к. заявка не подтверждена
     await bot.send_message(
         app["client_id"],
         f"❌ Ваша заявка №{app['id']} отклонена.\nКомментарий: {comment}"
@@ -500,13 +526,11 @@ async def reject_comment_take(m: Message, state: FSMContext):
     except:
         pass
     try:
-        # удаляем сообщение с подсказкой
         if prompt_id:
             await bot.delete_message(m.chat.id, prompt_id)
     except:
         pass
     try:
-        # удаляем сам комментарий OWNER
         await bot.delete_message(m.chat.id, m.message_id)
     except:
         pass
@@ -555,8 +579,11 @@ async def finalize_shipping(m: Message, state: FSMContext, photo_id: Optional[st
     await store.update_app(app)
     await store.add_event(app_id, m.from_user.id, "SHIP", "PHOTO")
 
-    # клиенту — как раньше
-    await bot.send_message(app["client_id"], f"📦 Ваша заявка №{app_id} отправлена. Фото трека ниже.")
+    # рабочий номер уже должен быть, но подстрахуемся
+    display_num = app.get("approved_num") or app_id
+
+    # клиенту — как раньше, но уже с рабочим номером
+    await bot.send_message(app["client_id"], f"📦 Ваша заявка №{display_num} отправлена. Фото трека ниже.")
     if photo_id:
         await bot.send_photo(app["client_id"], photo_id, caption="Фото квитанции/трек СДЭК")
 
@@ -583,7 +610,7 @@ async def finalize_shipping(m: Message, state: FSMContext, photo_id: Optional[st
 
     # администратору — в личку что всё ок
     try:
-        await bot.send_message(m.from_user.id, f"Отправка по заявке #{app_id} с фото зафиксирована ✅")
+        await bot.send_message(m.from_user.id, f"Отправка по заявке #{display_num} с фото зафиксирована ✅")
     except:
         pass
 
@@ -605,7 +632,7 @@ async def cb_viewtrack(c: CallbackQuery):
         await c.answer("Фото трека не найдено", show_alert=True)
         return
 
-    media = InputMediaPhoto(media=photo_id, caption=f"📸 Фото трека по заявке #{app_id}")
+    media = InputMediaPhoto(media=photo_id, caption=f"📸 Фото трека по заявке #{app.get('approved_num') or app_id}")
     try:
         await bot.edit_message_media(
             chat_id=MOD_CHAT_ID,
